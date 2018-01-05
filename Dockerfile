@@ -4,7 +4,6 @@ FROM centos/s2i-base-centos7
 # applications.
 
 EXPOSE 8080
-EXPOSE 8443
 
 # Description
 # This image provides an Apache 2.4 + PHP 7.1 environment for running PHP applications.
@@ -74,7 +73,7 @@ COPY ./root/ /
 # Reset permissions of filesystem to default values
 RUN /usr/libexec/container-setup && rpm-file-permissions
 
-RUN echo "<?php phpinfo(); ?>" > $APP_DATA/index.php
+RUN   echo "Some line to add to a file" >> ${APP_ROOT}/src/index.php
 
 USER 1001
 
